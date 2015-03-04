@@ -19,7 +19,7 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         ServletOutputStream out = resp.getOutputStream();
-        out.write("你好，这是测试页面！".getBytes());
+        out.write("hello, QiuYi, this is my website! please see it! if you see, then the website is deploy success!".getBytes());
         out.flush();
         out.close();
     }
