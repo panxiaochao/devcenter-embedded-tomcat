@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -10,16 +11,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
-        name = "MyServlet", 
-        urlPatterns = {"/hello"}
+        name = "HelloServlet", 
+        value = {"/hello"}
     )
 public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        ServletOutputStream out = resp.getOutputStream();
-        out.write("hello, QiuYi, this is my website! please see it! if you see, then the website is deploy success!".getBytes());
+    	resp.setCharacterEncoding("utf-8");
+    	resp.setContentType("text/html;charset=utf-8");
+        PrintWriter out = resp.getWriter();
+        out.println("<!DOCTYPE HTML>");
+        out.println("<HTML>");
+        out.println("      <HEAD>");
+        out.println("    　　<TITLE>A Servlet</TITLE>");
+        out.println("    　　<meta http-equiv=\"content-type\" " + "content=\"text/html; charset=utf-8\">");
+        out.println("　　 </HEAD>");
+        out.println("       <BODY>");
+        out.println("             Hello AnnotationServlet.");
+        out.println("     </BODY>");
+        out.println("</HTML>");
         out.flush();
         out.close();
     }
